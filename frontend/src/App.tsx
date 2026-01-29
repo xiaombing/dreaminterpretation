@@ -29,16 +29,16 @@ function App() {
     // 简单的模拟逻辑
     const lowerDream = dream.toLowerCase();
 
-    if (lowerDream.includes('water') || lowerDream.includes('海') || lowerDream.includes('水')) {
-      return 'Water in dreams often symbolizes purification, spiritual cleansing, and renewal. In Islamic tradition, clear water represents faith and knowledge, while turbulent water may indicate trials or emotional turmoil. This dream suggests you are seeking spiritual clarity or going through a period of emotional transformation.';
-    } else if (lowerDream.includes('snake') || lowerDream.includes('蛇')) {
-      return 'Seeing a snake in a dream can have various interpretations. In Islamic dream interpretation, a snake often represents an enemy or hidden danger. However, if the snake is harmless or you overcome it, this indicates victory over adversaries. The specific context matters greatly in understanding this symbol.';
-    } else if (lowerDream.includes('fly') || lowerDream.includes('flying') || lowerDream.includes('飞')) {
-      return 'Flying in dreams represents freedom, spiritual elevation, and transcendence. In Islamic interpretation, flying with ease suggests achieving your goals and spiritual growth. It may indicate that you are rising above worldly concerns and seeking higher understanding.';
-    } else if (lowerDream.includes('house') || lowerDream.includes('home') || lowerDream.includes('房子') || lowerDream.includes('家')) {
-      return 'A house in dreams typically represents the self, family, or one\'s life situation. In Islamic tradition, a well-maintained house suggests stability and blessings, while a damaged house may indicate challenges in family life or personal struggles. Pay attention to the condition and atmosphere of the house for deeper meaning.';
+    if (lowerDream.includes('water') || lowerDream.includes('海') || lowerDream.includes('水') || lowerDream.includes('ماء')) {
+      return t('dream.water');
+    } else if (lowerDream.includes('snake') || lowerDream.includes('蛇') || lowerDream.includes('أفعى') || lowerDream.includes('ثعبان')) {
+      return t('dream.snake');
+    } else if (lowerDream.includes('fly') || lowerDream.includes('flying') || lowerDream.includes('飞') || lowerDream.includes('طيران') || lowerDream.includes('يطير')) {
+      return t('dream.flying');
+    } else if (lowerDream.includes('house') || lowerDream.includes('home') || lowerDream.includes('房子') || lowerDream.includes('家') || lowerDream.includes('منزل') || lowerDream.includes('بيت')) {
+      return t('dream.house');
     } else {
-      return 'Dreams are messages from Allah and can carry important spiritual significance. Your dream contains unique symbolism that reflects your current life situation, spiritual state, or future events. Consider the emotions you felt, the people involved, and the overall atmosphere. Reflect on your current life challenges and prayers, as dreams often provide guidance for your path.';
+      return t('dream.default');
     }
   };
 
