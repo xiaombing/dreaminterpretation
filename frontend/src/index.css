@@ -1,0 +1,84 @@
+:root {
+  /* Premium Islamic Palette */
+  --color-primary: #10B981; /* Emerald 500 - Vibrant Green */
+  --color-primary-dark: #064E3B; /* Emerald 900 - Deep Green */
+  --color-secondary: #D4AF37; /* Metallic Gold */
+  --color-secondary-light: #F3E5AB; /* Vanilla/Light Gold */
+  --color-background: #0F172A; /* Slate 900 - Deep Night Blue/Black */
+  --color-surface: #1E293B; /* Slate 800 */
+  --color-text: #F8FAFC; /* Slate 50 */
+  --color-text-muted: #94A3B8; /* Slate 400 */
+  
+  --font-family-body: 'Inter', system-ui, -apple-system, sans-serif;
+  --font-family-display: 'Playfair Display', serif; /* For headings, giving a classic/mystical feel */
+
+  --spacing-unit: 8px;
+  --border-radius-lg: 16px;
+  --border-radius-md: 8px;
+  --border-radius-sm: 4px;
+  
+  --shadow-glow: 0 0 20px rgba(16, 185, 129, 0.2);
+  --shadow-gold: 0 0 15px rgba(212, 175, 55, 0.3);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-family-body);
+  background-color: var(--color-background);
+  color: var(--color-text);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  min-height: 100vh;
+  overflow-x: hidden;
+  background-image: 
+    radial-gradient(circle at 10% 20%, rgba(16, 185, 129, 0.05) 0%, transparent 20%),
+    radial-gradient(circle at 90% 80%, rgba(212, 175, 55, 0.05) 0%, transparent 20%);
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-family-display);
+  font-weight: 700;
+  color: var(--color-secondary-light);
+  margin-bottom: 1rem;
+}
+
+a {
+  color: var(--color-primary);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+a:hover {
+  color: var(--color-secondary);
+}
+
+button {
+  cursor: pointer;
+  font-family: inherit;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-background);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-surface);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-primary-dark);
+}
