@@ -1,20 +1,20 @@
-import React, { ReactNode } from 'react';
+import React, type { ReactNode } from 'react';
 import { Header } from './Header';
 import { Footer } from './Footer';
 
 interface LayoutProps {
-    children: ReactNode;
+  children: ReactNode;
 }
 
 export const Layout: React.FC<LayoutProps> = ({ children }) => {
-    return (
-        <div className="layout">
-            <Header />
-            <main className="main-content">
-                {children}
-            </main>
-            <Footer />
-            <style>{`
+  return (
+    <div className="layout">
+      <Header />
+      <main className="main-content">
+        {children}
+      </main>
+      <Footer />
+      <style>{`
         .layout {
           display: flex;
           flex-direction: column;
@@ -24,6 +24,6 @@ export const Layout: React.FC<LayoutProps> = ({ children }) => {
           flex: 1;
         }
       `}</style>
-        </div>
-    );
+    </div>
+  );
 };
