@@ -1,28 +1,31 @@
 import React from 'react';
+import { useLanguage } from '../contexts/LanguageContext';
 
 interface ResultCardProps {
-    dream: string;
-    interpretation: string;
+  dream: string;
+  interpretation: string;
 }
 
 export const ResultCard: React.FC<ResultCardProps> = ({ dream, interpretation }) => {
-    return (
-        <div className="result-card">
-            <div className="result-header">
-                <h3 className="result-title">Interpretation</h3>
-                <div className="separator"></div>
-            </div>
-            <div className="dream-summary">
-                <span className="label">Dream:</span>
-                <p>"{dream}"</p>
-            </div>
-            <div className="interpretation-content">
-                <p>{interpretation}</p>
-            </div>
-            <div className="result-footer">
-                <span className="source">Source: Islamic Dream Interpretation (Ibn Sirin)</span>
-            </div>
-            <style>{`
+  const { t, isRTL } = useLanguage();
+
+  return (
+    <div className="result-card" dir={isRTL ? 'rtl' : 'ltr'}>
+      <div className="result-header">
+        <h3 className="result-title">{t('result.title')}</h3>
+        <div className="separator"></div>
+      </div>
+      <div className="dream-summary">
+        <span className="label">{t('result.dreamLabel')}</span>
+        <p>"{dream}"</p>
+      </div>
+      <div className="interpretation-content">
+        <p>{interpretation}</p>
+      </div>
+      <div className="result-footer">
+        <span className="source">{t('result.source')}</span>
+      </div>
+      <style>{`
         .result-card {
           background: linear-gradient(145deg, rgba(30, 41, 59, 0.8), rgba(15, 23, 42, 0.9));
           border: 1px solid rgba(212, 175, 55, 0.2);
@@ -59,6 +62,10 @@ export const ResultCard: React.FC<ResultCardProps> = ({ dream, interpretation })
           margin-bottom: 1.5rem;
           border-left: 3px solid var(--color-text-muted);
         }
+        [dir="rtl"] .dream-summary {
+          border-left: none;
+          border-right: 3px solid var(--color-text-muted);
+        }
         .label {
           display: block;
           font-size: 0.75rem;
@@ -83,7 +90,10 @@ export const ResultCard: React.FC<ResultCardProps> = ({ dream, interpretation })
           color: var(--color-secondary-light);
           opacity: 0.8;
         }
+        [dir="rtl"] .result-footer {
+          text-align: left;
+        }
       `}</style>
-        </div>
-    );
+    </div>
+  );
 };

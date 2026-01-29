@@ -2,8 +2,10 @@ import { useState } from 'react';
 import { Layout } from './components/Layout';
 import { SearchInput } from './components/SearchInput';
 import { ResultCard } from './components/ResultCard';
+import { useLanguage } from './contexts/LanguageContext';
 
 function App() {
+  const { t, isRTL } = useLanguage();
   const [isLoading, setIsLoading] = useState(false);
   const [result, setResult] = useState<{ dream: string; interpretation: string } | null>(null);
 
@@ -43,16 +45,16 @@ function App() {
   return (
     <Layout>
       <div className="home-page">
-        <section className="hero-section">
+        <section className="hero-section" dir={isRTL ? 'rtl' : 'ltr'}>
           <div className="container">
             <div className="hero-content">
               <h1 className="hero-title">
                 <span className="title-icon">☪</span>
                 <br />
-                Discover the Meaning of Your Dreams
+                {t('hero.title')}
               </h1>
               <p className="hero-subtitle">
-                Explore dream interpretations rooted in Islamic tradition and the wisdom of scholars like Ibn Sirin
+                {t('hero.subtitle')}
               </p>
               <div className="search-container">
                 <SearchInput onSearch={handleSearch} isLoading={isLoading} />

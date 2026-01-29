@@ -1,17 +1,22 @@
 import React from 'react';
+import { useLanguage } from '../contexts/LanguageContext';
+import { LanguageSwitcher } from './LanguageSwitcher';
 
 export const Header: React.FC = () => {
+  const { t, isRTL } = useLanguage();
+
   return (
-    <header className="header">
+    <header className="header" dir={isRTL ? 'rtl' : 'ltr'}>
       <div className="container">
         <div className="header-content">
           <div className="logo">
-            <span  className="logo-icon">☪</span>
-            <span className="logo-text">Muslim Dream Interpretation</span>
+            <span className="logo-icon">☪</span>
+            <span className="logo-text">{t('site.title')}</span>
           </div>
           <nav className="nav">
-            <a href="/" className="nav-link">Home</a>
-            <a href="/about" className="nav-link">About</a>
+            <LanguageSwitcher />
+            <a href="/" className="nav-link">{t('nav.home')}</a>
+            <a href="/about" className="nav-link">{t('nav.about')}</a>
           </nav>
         </div>
       </div>
@@ -44,7 +49,8 @@ export const Header: React.FC = () => {
         }
         .nav {
           display: flex;
-          gap: 2rem;
+          gap: 1rem;
+          align-items: center;
         }
         .nav-link {
           color: var(--color-text-muted);

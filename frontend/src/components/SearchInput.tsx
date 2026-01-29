@@ -1,43 +1,45 @@
 import React, { useState } from 'react';
+import { useLanguage } from '../contexts/LanguageContext';
 
 interface SearchInputProps {
-    onSearch: (query: string) => void;
-    isLoading?: boolean;
+  onSearch: (query: string) => void;
+  isLoading?: boolean;
 }
 
 export const SearchInput: React.FC<SearchInputProps> = ({ onSearch, isLoading = false }) => {
-    const [query, setQuery] = useState('');
+  const [query, setQuery] = useState('');
+  const { t, isRTL } = useLanguage();
 
-    const handleSubmit = (e: React.FormEvent) => {
-        e.preventDefault();
-        if (query.trim()) {
-            onSearch(query);
-        }
-    };
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (query.trim()) {
+      onSearch(query);
+    }
+  };
 
-    return (
-        <form className="search-form" onSubmit={handleSubmit}>
-            <div className="input-wrapper">
-                <input
-                    type="text"
-                    className="search-input"
-                    placeholder="Describe your dream..."
-                    value={query}
-                    onChange={(e) => setQuery(e.target.value)}
-                    disabled={isLoading}
-                />
-                <button type="submit" className="search-button" disabled={isLoading || !query.trim()}>
-                    {isLoading ? (
-                        <span className="spinner"></span>
-                    ) : (
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                            <circle cx="11" cy="11" r="8"></circle>
-                            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-                        </svg>
-                    )}
-                </button>
-            </div>
-            <style>{`
+  return (
+    <form className="search-form" onSubmit={handleSubmit} dir={isRTL ? 'rtl' : 'ltr'}>
+      <div className="input-wrapper">
+        <input
+          type="text"
+          className="search-input"
+          placeholder={t('search.placeholder')}
+          value={query}
+          onChange={(e) => setQuery(e.target.value)}
+          disabled={isLoading}
+        />
+        <button type="submit" className="search-button" disabled={isLoading || !query.trim()}>
+          {isLoading ? (
+            <span className="spinner"></span>
+          ) : (
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <circle cx="11" cy="11" r="8"></circle>
+              <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+            </svg>
+          )}
+        </button>
+      </div>
+      <style>{`
         .search-form {
           width: 100%;
           max-width: 600px;
@@ -105,7 +107,14 @@ export const SearchInput: React.FC<SearchInputProps> = ({ onSearch, isLoading = 
         @keyframes spin {
           to { transform: rotate(360deg); }
         }
+        [dir="rtl"] .search-input {
+          padding: 1.25rem 1.5rem 1.25rem 3.5rem;
+        }
+        [dir="rtl"] .search-button {
+          right: auto;
+          left: 8px;
+        }
       `}</style>
-        </form>
-    );
+    </form>
+  );
 };
